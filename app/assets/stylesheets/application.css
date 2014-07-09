@@ -1,0 +1,42 @@
+/*
+ *= require bootstrap
+ */
+
+.book-name {
+  margin: 0 5px 0 0;
+  float: left;
+}
+
+.book-pages {
+  margin: 0 5px;
+  float: left;
+}
+
+.pages-count {
+  width: 40px;
+}
+
+.item {
+  margin: 5px 0;
+}
+
+.progress {
+  margin-bottom: 0;
+  width: 300px;
+}
+
+input[type=number] {
+  width: 110px !important;
+}
+
+.input-name {
+  width: 580px !important;
+}
+
+.checkbox {
+  line-height: 32px;
+}
+
+.edit-group {
+  margin: 0 auto !important;
+}
