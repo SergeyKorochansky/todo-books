@@ -40,3 +40,28 @@ input[type=number] {
 .edit-group {
   margin: 0 auto !important;
 }
+
+.progress-bar.active.my-reverse-class {
+  -webkit-animation-direction: reverse;
+  -moz-animation-direction: reverse;
+  -ms-animation-direction: reverse;
+  -o-animation-direction: reverse;
+  animation-direction: reverse;
+}
+
+input.ng-invalid.ng-dirty {
+  border: 1px #d9534f solid;
+  color: #d9534f;
+}
+input.ng-invalid.ng-dirty:focus {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #d9534f;
+}
+
+input.ng-valid.ng-dirty {
+  border: 1px #21b119 solid;
+  color: #21b119;
+}
+
+input.ng-valid.ng-dirty:focus {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 6px #21b119;
+}
