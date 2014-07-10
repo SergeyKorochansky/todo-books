@@ -1,5 +1,4 @@
-<h1 class="text-center">To-Do list for books</h1>
-<div class="container">
+<div class="container" ng-controller="bookCtrl">
   <div class="col-md-1 panel-body ">
     <button type="button" class="btn btn-success btn-block" ng-click="editOrCreateBook()">Add</button>
     <button type="button" class="btn btn-info btn-block" ng-click="listBooks()">Refresh</button>
@@ -44,8 +43,8 @@
         <td>{{book.total_pages}}</td>
         <td>
           <div class="progress">
-            <div class="progress-bar progress-bar-striped" ng-class="{'progress-bar-success active': book.active, 'progress-bar-warning': !book.active}"
-                 style="width:{{book.progress()}}%">
+            <div class="progress-bar progress-bar-striped" style="width:{{book.progress()}}%"
+                 ng-class="{'progress-bar-success active': book.active, 'progress-bar-warning': !book.active}">
             </div>
           </div>
         </td>

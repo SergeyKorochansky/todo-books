@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  get 'main/default'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'books#index'
+  root 'main#default'
 
   # Example of regular route:
   #   get 'books/:id' => 'catalog#view'
@@ -12,8 +14,8 @@ Rails.application.routes.draw do
   #   get 'books/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :books
-  resources :groups
+  resources :books, format: 'json'
+  resources :groups, format: 'json'
 
   # Example resource route with options:
   #   resources :books do
