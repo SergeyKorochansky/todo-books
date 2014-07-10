@@ -1,11 +1,11 @@
 <div class="container" ng-controller="bookCtrl">
   <div class="col-md-1 panel-body ">
     <button type="button" class="btn btn-success btn-block" ng-click="editOrCreateBook()">Add</button>
-    <button type="button" class="btn btn-info btn-block" ng-click="listBooks()">Refresh</button>
+    <button type="button" class="btn btn-info btn-block" ng-click="refreshBooks()">Refresh</button>
   </div>
   <div class="col-md-11">
-    <div class="row" novalidate>
-      <div class="panel-body form-inline">
+    <div class="row" >
+      <form class="panel-body form-inline" novalidate ng-submit="saveEdit(currentBook)">
         <div class="form-group">
           <input class="form-control input-name" required ng-model="currentBook.name" placeholder="Author - Name - Year"/>
         </div>
@@ -21,10 +21,10 @@
           </label>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary" ng-click="saveEdit(currentBook)">Save</button>
+          <button class="btn btn-primary" type="submit">Save</button>
           <button class="btn btn-primary" ng-click="cancelEdit()">Cancel</button>
         </div>
-      </div>
+      </form>
     </div>
     <table class="table table-bordered">
       <thead>
@@ -43,7 +43,7 @@
         <td>{{book.total_pages}}</td>
         <td>
           <div class="progress">
-            <div class="progress-bar progress-bar-striped" style="width:{{book.progress()}}%"
+            <div class="progress-bar progress-bar-striped my-reverse-class" style="width:{{book.progress()}}%"
                  ng-class="{'progress-bar-success active': book.active, 'progress-bar-warning': !book.active}">
             </div>
           </div>
