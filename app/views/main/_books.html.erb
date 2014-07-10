@@ -5,7 +5,7 @@
   </div>
   <div class="col-md-11">
     <div class="row" >
-      <form class="panel-body form-inline" novalidate ng-submit="saveEdit(currentBook)">
+      <form name="form" class="panel-body form-inline" novalidate ng-submit="saveEdit(currentBook)">
         <div class="form-group">
           <input class="form-control input-name" required ng-model="currentBook.name" placeholder="Author - Name - Year"/>
         </div>
@@ -21,7 +21,7 @@
           </label>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary" type="submit">Save</button>
+          <button class="btn btn-primary" type="submit" ng-disabled="!form.$valid">Save</button>
           <button class="btn btn-primary" ng-click="cancelEdit()">Cancel</button>
         </div>
       </form>
