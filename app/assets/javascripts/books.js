@@ -4,11 +4,11 @@ booksApp.controller("bookCtrl", function ($scope, $http, $resource) {
     $scope.booksResource = $resource("/books/:id.json", { id: "@id" },
         { create: { method: "POST" }, save: { method: "PATCH" } });
 
-    $scope.booksResource.prototype.progress = function(){
+    $scope.booksResource.prototype.progress = function () {
         return (this.read_pages / this.total_pages) * 100;
     };
 
-    $scope.progress = function(book){
+    $scope.progress = function (book) {
         return book.progress();
     };
 
