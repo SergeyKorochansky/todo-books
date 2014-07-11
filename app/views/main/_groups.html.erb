@@ -20,11 +20,11 @@
     </div>
     <div class="row" ng-repeat="rows in groups | orderBy:name | partition:6">
       <div class="col-md-2 text-center pull-left" ng-repeat="group in rows">
-        <img src="/assets//{{group.url}}"/>
-        <div class="row">{{group.name}}</div>
+        <img ng-src="{{group.url}}">
+        <h4>{{group.name}}</h4>
         <p class="row">
-          <button class="btn btn-xs btn-primary btn-info" ng-click="editOrCreateGroup(group)">E</button>
-          <button class="btn btn-xs btn-primary btn-danger" ng-click="deleteGroup(group)">D</button>
+          <button class="btn btn-xs btn-primary btn-info" ng-click="editOrCreateGroup(group)">Edit</button>
+          <button class="btn btn-xs btn-primary btn-danger" ng-click="deleteGroup(group)">Delete</button>
         </p>
       </div>
     </div>
