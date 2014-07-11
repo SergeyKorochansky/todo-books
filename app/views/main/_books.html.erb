@@ -29,6 +29,7 @@
     <table class="table table-bordered">
       <thead>
       <tr>
+        <th>Groups</th>
         <th>Name</th>
         <th>Read</th>
         <th>Total</th>
@@ -38,6 +39,7 @@
       </thead>
       <tbody>
       <tr ng-repeat="book in books | orderBy:progress:true">
+        <td><img ng-src="{{group.url}}" ng-repeat="group in book.groups | orderBy:name" width="22"></td>
         <td>{{book.name}}</td>
         <td>{{book.read_pages}}</td>
         <td>{{book.total_pages}}</td>
