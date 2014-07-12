@@ -16,6 +16,8 @@
             Active:
             %input{'ng-model' => 'currentBook.active', type:'checkbox'}
         .form-group
+          %div{'multi-select' => '', 'input-model' => 'currentBookGroups', 'button-label'=> 'name', 'item-label' => 'name', 'tick-property' => 'ticked'}
+        .form-group
           %button.btn.btn-primary{'ng-disabled' => '!form.$valid', type:'submit'} Save
           %button.btn.btn-primary{'ng-click' => 'cancelEdit()', type:'reset'} Cancel
     %table.table.table-bordered
