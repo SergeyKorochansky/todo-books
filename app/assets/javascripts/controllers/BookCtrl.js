@@ -1,5 +1,6 @@
-booksApp.controller("BookCtrl", function ($scope, $http, $resource) {
+booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService) {
     $scope.currentBook = {};
+    $scope.currentBookGroups = [];
 
     $scope.booksResource = $resource("/books/:id.json", { id: "@id" },
         { create: { method: "POST" }, save: { method: "PATCH" } });
@@ -34,9 +35,25 @@ booksApp.controller("BookCtrl", function ($scope, $http, $resource) {
 
     $scope.editOrCreateBook = function (book) {
         $scope.currentBook = book ? book : {};
+        $scope.currentBookGroups = groupService.getGroups();
+        $scope.currentBookGroups.forEach(function (group) {
+            var length = book.groups.length;
+            for (var i = 0; i < length; i++) {
+                group.ticked = false;
+                if (book.groups[i].id === group.id) {
+                    group.ticked = true;
+                    break;
+                }
+            }
+        });
     };
 
     $scope.saveEdit = function (book) {
+        book.groups = $scope.currentBook.groups = $scope.currentBookGroups.filter(function (group) {
+            return group.ticked;
+        }).map(function (group) {
+            return group.id;
+        });
         if (angular.isDefined(book.id)) {
             $scope.updateBook(book);
         } else {
@@ -49,7 +66,14 @@ booksApp.controller("BookCtrl", function ($scope, $http, $resource) {
             $scope.currentBook.$get();
         }
         $scope.currentBook = {};
+        $scope.currentBookGroups = [];
     };
 
     $scope.refreshBooks();
+    $scope.$watch(function () {
+        return groupService.getGroups();
+    }, function (newGroups) {
+        if (newGroups)
+            groupService.setGroups(newGroups);
+    });
 });

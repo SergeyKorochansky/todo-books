@@ -1,4 +1,4 @@
-booksApp.controller("GroupCtrl", function ($scope, $http, $resource) {
+booksApp.controller("GroupCtrl", function ($scope, $http, $resource, groupService) {
     $scope.currentGroup = {};
 
     $scope.groupsResource = $resource("/groups/:id.json", { id: "@id" },
@@ -48,4 +48,8 @@ booksApp.controller("GroupCtrl", function ($scope, $http, $resource) {
     };
 
     $scope.refreshGroups();
+    $scope.$watch('groups', function(newGroups){
+    if (newGroups)
+        groupService.setGroups(newGroups);
+    });
 });
