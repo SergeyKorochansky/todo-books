@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @book = Group.new(group_params)
+    @group = Group.new(group_params)
     respond_to do |format|
       if @group.update(group_params)
         format.json { render :show }
