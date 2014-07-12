@@ -1,4 +1,4 @@
-booksApp.controller("bookCtrl", function ($scope, $http, $resource) {
+booksApp.controller("BookCtrl", function ($scope, $http, $resource) {
     $scope.currentBook = {};
 
     $scope.booksResource = $resource("/books/:id.json", { id: "@id" },

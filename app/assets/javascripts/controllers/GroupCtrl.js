@@ -1,4 +1,4 @@
-booksApp.controller("groupCtrl", function ($scope, $http, $resource) {
+booksApp.controller("GroupCtrl", function ($scope, $http, $resource) {
     $scope.currentGroup = {};
 
     $scope.groupsResource = $resource("/groups/:id.json", { id: "@id" },
