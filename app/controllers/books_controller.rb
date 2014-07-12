@@ -9,9 +9,10 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = Book.new(book_params.except(:groups))
     respond_to do |format|
-      if @book.update(book_params)
+      if @book.save
+        @book.group_ids = book_params[:groups]
         format.json { render :show }
       else
         format.json { render json: @book.errors, status: :unprocessable_entity }
@@ -22,7 +23,7 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params.except(:groups))
-        @book.group_ids =  book_params[:groups]
+        @book.group_ids = book_params[:groups]
         format.json { render :show }
       else
         format.json { render json: @book.errors, status: :unprocessable_entity }
