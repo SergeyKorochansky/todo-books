@@ -1,0 +1,45 @@
+.container{'ng-controller' => 'bookCtrl'}
+  .col-md-1.panel-body
+    %button.btn.btn-success.btn-block{'ng-click' => 'editOrCreateBook()', type:'button'} Add
+    %button.btn.btn-info.btn-block{'ng-click' => 'refreshBooks()', type:'button'} Refresh
+  .col-md-11
+    .row
+      %form.panel-body.form-inline{name:'form', 'ng-submit' => 'saveEdit(currentBook)', novalidate:''}
+        .form-group
+          %input.form-control.input-name{'ng-model' => 'currentBook.name', placeholder:'Author - Name - Year', required:''}
+        .form-group
+          %input.form-control{'ng-model' => 'currentBook.read_pages', placeholder:'Read', type:'number'}
+        .form-group
+          %input.form-control{'ng-model' => 'currentBook.total_pages', placeholder:'Total', type:'number'}
+        .checkbox
+          %label
+            Active:
+            %input{'ng-model' => 'currentBook.active', type:'checkbox'}
+        .form-group
+          %button.btn.btn-primary{'ng-disabled' => '!form.$valid', type:'submit'} Save
+          %button.btn.btn-primary{'ng-click' => 'cancelEdit()', type:'reset'} Cancel
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th Groups
+          %th Name
+          %th Read
+          %th Total
+          %th Progress
+          %th Control
+      %tbody
+        %tr{'ng-repeat' => 'book in books | orderBy:progress:true'}
+          %td
+            %img{'ng-repeat' => 'group in book.groups | orderBy:name', 'ng-src' => '{{group.url}}', width:'22'}
+          %td
+            {{book.name}}
+          %td
+            {{book.read_pages}}
+          %td
+            {{book.total_pages}}
+          %td
+            .progress
+              .progress-bar.progress-bar-striped.my-reverse-class{'ng-class' => "{'progress-bar-success active': book.active, 'progress-bar-warning': !book.active}", style:'width:{{book.progress()}}%'}
+          %td
+            %button.btn.btn-xs.btn-primary.btn-info{'ng-click' => 'editOrCreateBook(book)'} Edit
+            %button.btn.btn-xs.btn-primary.btn-danger{'ng-click' => 'deleteBook(book)'} Delete

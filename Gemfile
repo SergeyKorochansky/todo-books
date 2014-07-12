@@ -10,5 +10,6 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'angularjs-rails'
 gem 'angular-ui-bootstrap-rails'
 gem 'ng-rails-csrf'
+gem 'haml'
 gem 'pry-rails',     group: :development
 gem 'spring',        group: :development
