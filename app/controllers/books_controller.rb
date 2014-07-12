@@ -21,7 +21,8 @@ class BooksController < ApplicationController
 
   def update
     respond_to do |format|
-      if @book.update(book_params)
+      if @book.update(book_params.except(:groups))
+        @book.group_ids =  book_params[:groups]
         format.json { render :show }
       else
         format.json { render json: @book.errors, status: :unprocessable_entity }
@@ -43,6 +44,6 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.permit(:id, :name, :active, :read_pages, :total_pages)
+    params.permit(:id, :name, :active, :read_pages, :total_pages, groups: [])
   end
 end
