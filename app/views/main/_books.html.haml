@@ -27,21 +27,18 @@
           %th Name
           %th Read
           %th Total
-          %th Progress
           %th Control
       %tbody
         %tr{'ng-repeat' => 'book in books | orderBy:progress:true'}
+          %td.fit-content
+            %img.group-icon{'ng-repeat' => 'group in book.groups | orderBy:name', 'ng-src' => '{{group.url}}'}
           %td
-            %img{'ng-repeat' => 'group in book.groups | orderBy:name', 'ng-src' => '{{group.url}}', width:'22'}
-          %td
-            {{book.name}}
-          %td
+            .progress-cell{'ng-style' => 'book.progressStyle()', 'ng-class' => '{active: book.active}'}
+              {{book.name}}
+          %td.fit-content
             {{book.read_pages}}
-          %td
+          %td.fit-content
             {{book.total_pages}}
-          %td
-            .progress
-              .progress-bar.progress-bar-striped.my-reverse-class{'ng-class' => "{'progress-bar-success active': book.active, 'progress-bar-warning': !book.active}", style:'width:{{book.progress()}}%'}
-          %td
+          %td.fit-content
             %button.btn.btn-xs.btn-primary.btn-info{'ng-click' => 'editOrCreateBook(book)'} Edit
             %button.btn.btn-xs.btn-primary.btn-danger{'ng-click' => 'deleteBook(book)'} Delete

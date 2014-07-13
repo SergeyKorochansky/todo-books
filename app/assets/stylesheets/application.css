@@ -17,15 +17,6 @@
   width: 40px;
 }
 
-.item {
-  margin: 5px 0;
-}
-
-.progress {
-  margin-bottom: 0;
-  width: 300px;
-}
-
 input[type=number] {
   width: 110px !important;
 }
@@ -40,14 +31,6 @@ input[type=number] {
 
 .edit-group {
   margin: 0 auto !important;
-}
-
-.progress-bar.active.my-reverse-class {
-  -webkit-animation-direction: reverse;
-  -moz-animation-direction: reverse;
-  -ms-animation-direction: reverse;
-  -o-animation-direction: reverse;
-  animation-direction: reverse;
 }
 
 input.ng-invalid.ng-dirty {
@@ -75,8 +58,6 @@ input.ng-valid.ng-dirty:focus {
 .nav-tabs > li, .nav-pills > li {
   float: none;
   display: inline-block;
-  *display: inline; /* ie7 fix */
-  zoom: 1; /* hasLayout ie7 trigger */
 }
 
 .nav-tabs, .nav-pills {
@@ -85,4 +66,26 @@ input.ng-valid.ng-dirty:focus {
 
 .top-space {
   margin: 15px 0;
+}
+
+.group-icon {
+  width: 36px;
+}
+
+.progress-cell {
+  background: url(/assets/f5f5f5.png) right repeat-y, #a8e193 left;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+  border-radius: 4px;
+  padding: 0 4px;
+  font-size: 24px;
+  text-shadow: 0 0 5px #ffffff;
+}
+
+.progress-cell.active {
+  background: url(/assets/f5f5f5.png) right repeat-y, #ffcb8c left;
+}
+
+.fit-content {
+  width: 1%;
+  white-space: nowrap;
 }
