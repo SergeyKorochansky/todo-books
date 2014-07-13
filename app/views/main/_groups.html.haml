@@ -12,11 +12,12 @@
         .form-group
           %button.btn.btn-primary{'ng-disabled' => '!form.$valid', type: 'submit'} Save
           %button.btn.btn-primary{'ng-click' => 'cancelEdit()', type: 'reset'} Cancel
-    .row{'ng-repeat' => 'rows in groups | orderBy:name | partition:6'}
-      .col-md-2.text-center.pull-left{'ng-repeat' => 'group in rows'}
-        %img{'ng-src' => '{{group.url}}'}
-        %h4
-          {{group.name}}
-        %p.row
-          %button.btn.btn-xs.btn-primary.btn-info{'ng-click' => 'editOrCreateGroup(group)'} Edit
-          %button.btn.btn-xs.btn-primary.btn-danger{'ng-click' => 'deleteGroup(group)'} Delete
+    .top-space
+      .row{'ng-repeat' => 'rows in groups | orderBy:name | partition:6'}
+        .col-md-2.text-center.pull-left{'ng-repeat' => 'group in rows'}
+          %img{'ng-src' => '{{group.url}}'}
+          %h4
+            {{group.name}}
+          %p.row
+            %button.btn.btn-xs.btn-primary.btn-info{'ng-click' => 'editOrCreateGroup(group)'} Edit
+            %button.btn.btn-xs.btn-primary.btn-danger{'ng-click' => 'deleteGroup(group)'} Delete
