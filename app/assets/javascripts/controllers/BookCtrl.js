@@ -37,16 +37,21 @@ booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService
     $scope.editOrCreateBook = function (book) {
         $scope.currentBook = book ? book : {};
         $scope.currentBookGroups = groupService.getGroups();
-        $scope.currentBookGroups.forEach(function (group) {
-            var length = book.groups.length;
-            for (var i = 0; i < length; i++) {
-                group.ticked = false;
-                if (book.groups[i].id === group.id) {
-                    group.ticked = true;
-                    break;
+        if (book)
+            $scope.currentBookGroups.forEach(function (group) {
+                var length = book.groups.length;
+                for (var i = 0; i < length; i++) {
+                    group.ticked = false;
+                    if (book.groups[i].id === group.id) {
+                        group.ticked = true;
+                        break;
+                    }
                 }
-            }
-        });
+            });
+        else
+            $scope.currentBookGroups.forEach(function (group) {
+                group.ticked = false;
+            });
         $scope.isCollapsed = false;
     };
 
