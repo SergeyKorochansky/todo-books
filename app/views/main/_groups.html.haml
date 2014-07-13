@@ -3,7 +3,7 @@
     %button.btn.btn-success.btn-block{'ng-click' => 'editOrCreateGroup()', type: 'button'} Add
     %button.btn.btn-info.btn-block{'ng-click' => 'refreshGroups()', type: 'button'} Refresh
   .col-md-11
-    .row
+    .row{'collapse' => 'isCollapsed'}
       %form.panel-body.form-inline{name: 'form', 'ng-submit' => 'saveEdit(currentGroup)', novalidate:''}
         .form-group
           %input.form-control{'ng-model' => 'currentGroup.name', placeholder: 'Name', required:''}

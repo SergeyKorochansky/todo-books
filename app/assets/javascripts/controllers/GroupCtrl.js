@@ -1,4 +1,5 @@
 booksApp.controller("GroupCtrl", function ($scope, $http, $resource, groupService) {
+    $scope.isCollapsed = true;
     $scope.currentGroup = {};
 
     $scope.groupsResource = $resource("/groups/:id.json", { id: "@id" },
@@ -30,6 +31,7 @@ booksApp.controller("GroupCtrl", function ($scope, $http, $resource, groupServic
 
     $scope.editOrCreateGroup = function (group) {
         $scope.currentGroup = group ? group : {};
+        $scope.isCollapsed = false;
     };
 
     $scope.saveEdit = function (group) {
@@ -38,6 +40,7 @@ booksApp.controller("GroupCtrl", function ($scope, $http, $resource, groupServic
         } else {
             $scope.createGroup(group);
         }
+        $scope.isCollapsed = true;
     };
 
     $scope.cancelEdit = function () {
@@ -45,6 +48,7 @@ booksApp.controller("GroupCtrl", function ($scope, $http, $resource, groupServic
             $scope.currentGroup.$get();
         }
         $scope.currentGroup = {};
+        $scope.isCollapsed = true;
     };
 
     $scope.refreshGroups();
