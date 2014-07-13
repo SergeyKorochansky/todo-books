@@ -10,6 +10,12 @@ booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService
         return (this.read_pages / this.total_pages) * 100;
     };
 
+    $scope.booksResource.prototype.progressStyle = function () {
+        return {
+            'background-size': (100 -this.progress()) + '%,' + this.progress() + '%'
+        };
+    };
+
     $scope.progress = function (book) {
         return book.progress();
     };
