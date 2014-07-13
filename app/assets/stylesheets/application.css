@@ -82,3 +82,7 @@ input.ng-valid.ng-dirty:focus {
 .nav-tabs, .nav-pills {
   text-align: center;
 }
+
+.top-space {
+  margin: 15px 0;
+}
