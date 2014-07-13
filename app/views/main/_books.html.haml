@@ -3,7 +3,7 @@
     %button.btn.btn-success.btn-block{'ng-click' => 'editOrCreateBook()', type:'button'} Add
     %button.btn.btn-info.btn-block{'ng-click' => 'refreshBooks()', type:'button'} Refresh
   .col-md-11
-    .row
+    .row{'collapse' => 'isCollapsed'}
       %form.panel-body.form-inline{name:'form', 'ng-submit' => 'saveEdit(currentBook)', novalidate:''}
         .form-group
           %input.form-control.input-name{'ng-model' => 'currentBook.name', placeholder:'Author - Name - Year', required:''}

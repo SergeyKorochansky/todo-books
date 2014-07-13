@@ -1,4 +1,5 @@
 booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService) {
+    $scope.isCollapsed = true;
     $scope.currentBook = {};
     $scope.currentBookGroups = [];
 
@@ -46,6 +47,7 @@ booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService
                 }
             }
         });
+        $scope.isCollapsed = false;
     };
 
     $scope.saveEdit = function (book) {
@@ -59,6 +61,7 @@ booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService
         } else {
             $scope.createBook(book);
         }
+        $scope.isCollapsed = true;
     };
 
     $scope.cancelEdit = function () {
@@ -67,6 +70,7 @@ booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService
         }
         $scope.currentBook = {};
         $scope.currentBookGroups = [];
+        $scope.isCollapsed = true;
     };
 
     $scope.refreshBooks();
