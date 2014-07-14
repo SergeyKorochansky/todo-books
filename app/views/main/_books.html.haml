@@ -58,7 +58,7 @@
         %tr{'ng-repeat' => 'book in books | orderBy:orderBookProperty:orderBookReversed()'}
           %td.fit-content
             %div{'ng-repeat' => 'row in book.groups | orderBy:name | partition:6'}
-              %img.group-icon{'ng-repeat' => 'group in row', 'ng-src' => '{{group.url}}'}
+              %img.group-icon{'ng-repeat' => 'group in row', 'ng-src' => '{{group.url}}', title: '{{group.name}}'}
           %td
             .progress-cell{'ng-style' => 'book.progressStyle()', 'ng-class' => '{active: book.active, completed: book.completed}'}
               {{book.name}}
