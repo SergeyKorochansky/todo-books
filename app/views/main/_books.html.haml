@@ -3,6 +3,27 @@
     %button.btn.btn-success.btn-block{'ng-click' => 'editOrCreateBook()', type:'button'} Add
     %button.btn.btn-info.btn-block{'ng-click' => 'refreshBooks()', type:'button'} Refresh
     %button.btn.btn-info.btn-block{'ng-click' => 'swapFixedWidth()', type:'button'} Grid
+    .btn-block.btn-group.dropdown{'is-open' => 'status.isopen'}
+      %button.btn.btn-warning.dropdown-toggle.btn-block{type: 'button', 'ng-disabled' => 'disabled'}
+        Sort
+        %span.caret
+      %ul.dropdown-menu{role: 'menu'}
+        %li
+          %a{href:'#', 'ng-click' => "orderBookBy='nameAsc'"} Name Asc
+        %li
+          %a{href:'#', 'ng-click' => "orderBookBy='nameDesc'"} Name Desc
+        %li
+          %a{href:'#', 'ng-click' => "orderBookBy='progressAsc'"} Progress Asc
+        %li
+          %a{href:'#', 'ng-click' => "orderBookBy='progressDesc'"} Progress Desc
+        %li
+          %a{href:'#', 'ng-click' => "orderBookBy='pagesTotalAsc'"} Total pages Asc
+        %li
+          %a{href:'#', 'ng-click' => "orderBookBy='pagesTotalDesc'"} Total pages Desc
+        %li
+          %a{href:'#', 'ng-click' => "orderBookBy='pagesReadAsc'"} Read pages Asc
+        %li
+          %a{href:'#', 'ng-click' => "orderBookBy='pagesReadDesc'"} Read pages Desc
   .col-md-11
     .row{'collapse' => 'isCollapsed'}
       %form.panel-body.form-inline{name:'form', 'ng-submit' => 'saveEdit(currentBook)', novalidate:''}
@@ -30,7 +51,7 @@
           %th Total
           %th Control
       %tbody
-        %tr{'ng-repeat' => 'book in books | orderBy:progress:true'}
+        %tr{'ng-repeat' => 'book in books | orderBy:orderBookProperty:orderBookReversed()'}
           %td.fit-content
             %div{'ng-repeat' => 'row in book.groups | orderBy:name | partition:6'}
               %img.group-icon{'ng-repeat' => 'group in row', 'ng-src' => '{{group.url}}'}

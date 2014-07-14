@@ -3,6 +3,7 @@ booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService
     $scope.currentBook = {};
     $scope.currentBookGroups = [];
     $scope.fixedWidth = fixedWidthService.get();
+    $scope.orderBookBy = 'nameAsc';
 
     $scope.booksResource = $resource("/books/:id.json", { id: "@id" },
         { create: { method: "POST" }, save: { method: "PATCH" } });
@@ -17,8 +18,25 @@ booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService
         };
     };
 
-    $scope.progress = function (book) {
-        return book.progress();
+    $scope.orderBookProperty = function (book) {
+        switch ($scope.orderBookBy) {
+            case 'nameAsc':
+            case 'nameDesc':
+                return book.name;
+            case 'progressAsc':
+            case 'progressDesc':
+                return book.progress();
+            case 'pagesTotalAsc':
+            case 'pagesTotalDesc':
+                return book.total_pages;
+            case 'pagesReadAsc':
+            case 'pagesReadDesc':
+                return book.read_pages;
+        }
+    };
+
+    $scope.orderBookReversed = function () {
+        return $scope.orderBookBy.match(/.*Desc/);
     };
 
     $scope.refreshBooks = function () {
