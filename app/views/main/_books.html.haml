@@ -56,7 +56,7 @@
             %div{'ng-repeat' => 'row in book.groups | orderBy:name | partition:6'}
               %img.group-icon{'ng-repeat' => 'group in row', 'ng-src' => '{{group.url}}'}
           %td
-            .progress-cell{'ng-style' => 'book.progressStyle()', 'ng-class' => '{active: book.active}'}
+            .progress-cell{'ng-style' => 'book.progressStyle()', 'ng-class' => '{active: book.active, completed: book.completed}'}
               {{book.name}}
           %td.fit-content
             {{book.read_pages}}
