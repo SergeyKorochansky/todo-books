@@ -45,6 +45,6 @@ class BooksController < ApplicationController
   end
 
   def book_params
-    params.permit(:id, :name, :active, :read_pages, :total_pages, groups: [])
+    params.permit(:id, :name, :active, :completed, :read_pages, :total_pages, groups: [])
   end
 end
