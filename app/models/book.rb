@@ -6,7 +6,7 @@ class Book < ActiveRecord::Base
 
   validates :name, :total_pages, :read_pages, presence: true
   validates :total_pages, :read_pages, numericality: { only_integer: true }
-  validates :active, inclusion: [true, false]
+  validates :active, :completed, inclusion: [true, false]
 
   def init
     self.active      ||= false
