@@ -1,7 +1,8 @@
-.container{'ng-controller' => 'BookCtrl'}
+%div{'ng-controller' => 'BookCtrl', 'ng-class' => '{container: fixedWidth}'}
   .col-md-1.panel-body
     %button.btn.btn-success.btn-block{'ng-click' => 'editOrCreateBook()', type:'button'} Add
     %button.btn.btn-info.btn-block{'ng-click' => 'refreshBooks()', type:'button'} Refresh
+    %button.btn.btn-info.btn-block{'ng-click' => 'swapFixedWidth()', type:'button'} Grid
   .col-md-11
     .row{'collapse' => 'isCollapsed'}
       %form.panel-body.form-inline{name:'form', 'ng-submit' => 'saveEdit(currentBook)', novalidate:''}

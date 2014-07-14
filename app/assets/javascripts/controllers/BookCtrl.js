@@ -1,7 +1,8 @@
-booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService) {
+booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService, fixedWidthService) {
     $scope.isCollapsed = true;
     $scope.currentBook = {};
     $scope.currentBookGroups = [];
+    $scope.fixedWidth = fixedWidthService.get();
 
     $scope.booksResource = $resource("/books/:id.json", { id: "@id" },
         { create: { method: "POST" }, save: { method: "PATCH" } });
@@ -61,6 +62,10 @@ booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService
         $scope.isCollapsed = false;
     };
 
+    $scope.swapFixedWidth = function(){
+        $scope.fixedWidth = !$scope.fixedWidth;
+    };
+
     $scope.saveEdit = function (book) {
         book.groups = $scope.currentBook.groups = $scope.currentBookGroups.filter(function (group) {
             return group.ticked;
@@ -90,5 +95,12 @@ booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService
     }, function (newGroups) {
         if (newGroups)
             groupService.setGroups(newGroups);
+    });
+
+    $scope.$watch('fixedWidth', function(newValue){
+        fixedWidthService.set(newValue);
+    });
+    $scope.$watch(fixedWidthService.get, function(newValue){
+        $scope.fixedWidth = newValue;
     });
 });

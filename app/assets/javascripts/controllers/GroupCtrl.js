@@ -1,6 +1,7 @@
-booksApp.controller("GroupCtrl", function ($scope, $http, $resource, groupService) {
+booksApp.controller("GroupCtrl", function ($scope, $http, $resource, groupService, fixedWidthService) {
     $scope.isCollapsed = true;
     $scope.currentGroup = {};
+    $scope.fixedWidth = fixedWidthService.get();
 
     $scope.groupsResource = $resource("/groups/:id.json", { id: "@id" },
         { create: { method: "POST" }, save: { method: "PATCH" } });
@@ -34,6 +35,10 @@ booksApp.controller("GroupCtrl", function ($scope, $http, $resource, groupServic
         $scope.isCollapsed = false;
     };
 
+    $scope.swapFixedWidth = function(){
+        $scope.fixedWidth = !$scope.fixedWidth;
+    };
+
     $scope.saveEdit = function (group) {
         if (angular.isDefined(group.id)) {
             $scope.updateGroup(group);
@@ -53,7 +58,15 @@ booksApp.controller("GroupCtrl", function ($scope, $http, $resource, groupServic
 
     $scope.refreshGroups();
     $scope.$watch('groups', function(newGroups){
-    if (newGroups)
-        groupService.setGroups(newGroups);
+        if (newGroups)
+            groupService.setGroups(newGroups);
     });
+
+    $scope.$watch('fixedWidth', function(newValue){
+            fixedWidthService.set(newValue);
+    });
+    $scope.$watch(fixedWidthService.get, function(newValue){
+            $scope.fixedWidth = newValue;
+    });
+
 });
