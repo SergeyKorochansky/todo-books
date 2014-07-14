@@ -32,7 +32,8 @@
       %tbody
         %tr{'ng-repeat' => 'book in books | orderBy:progress:true'}
           %td.fit-content
-            %img.group-icon{'ng-repeat' => 'group in book.groups | orderBy:name', 'ng-src' => '{{group.url}}'}
+            %div{'ng-repeat' => 'row in book.groups | orderBy:name | partition:6'}
+              %img.group-icon{'ng-repeat' => 'group in row', 'ng-src' => '{{group.url}}'}
           %td
             .progress-cell{'ng-style' => 'book.progressStyle()', 'ng-class' => '{active: book.active}'}
               {{book.name}}
