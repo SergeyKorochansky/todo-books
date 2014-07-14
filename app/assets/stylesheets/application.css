@@ -85,6 +85,10 @@ input.ng-valid.ng-dirty:focus {
   background: url(/assets/f5f5f5.png) right repeat-y, #a8e193 left;
 }
 
+.progress-cell.completed {
+  background: url(/assets/f5f5f5.png) right repeat-y, #B4DEFF left;
+}
+
 .fit-content {
   width: 1%;
   white-space: nowrap;
