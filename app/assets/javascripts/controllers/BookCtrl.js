@@ -35,6 +35,10 @@ booksApp.controller("BookCtrl", function ($scope, $http, $resource, groupService
         }
     };
 
+    $scope.name = function (group) {
+        return group.name;
+    };
+
     $scope.orderBookReversed = function () {
         return $scope.orderBookBy.match(/.*Desc/);
     };
